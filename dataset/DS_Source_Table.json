@@ -1,0 +1,88 @@
+{
+	"name": "DS_Source_Table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Source",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"Source_Database_Name": {
+					"value": "@dataset().Database_Name",
+					"type": "Expression"
+				},
+				"Server_Name": {
+					"value": "@dataset().Server_Name",
+					"type": "Expression"
+				},
+				"User_Name": {
+					"value": "@dataset().User_Name",
+					"type": "Expression"
+				},
+				"Password": {
+					"value": "@dataset().Password",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"Table_Schema": {
+				"type": "string"
+			},
+			"Table_Name": {
+				"type": "string"
+			},
+			"Database_Name": {
+				"type": "string"
+			},
+			"Server_Name": {
+				"type": "string"
+			},
+			"User_Name": {
+				"type": "string"
+			},
+			"Password": {
+				"type": "string"
+			},
+			"Query": {
+				"type": "string"
+			},
+			"ID": {
+				"type": "string"
+			},
+			"Query_v1": {
+				"type": "string"
+			},
+			"Param_1": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "DEPTNO",
+				"type": "decimal",
+				"precision": 2,
+				"scale": 0
+			},
+			{
+				"name": "DNAME",
+				"type": "varchar"
+			},
+			{
+				"name": "LOC",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().Table_Schema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().Table_Name",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

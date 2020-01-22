@@ -1,0 +1,105 @@
+{
+	"name": "PL_Child_WF3",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.PassingSchema",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"sqlReaderStoredProcedureName": {
+										"value": "@{item().Src_Query_v1}",
+										"type": "Expression"
+									},
+									"storedProcedureParameters": {
+										"Parameter_1": {
+											"type": "String",
+											"value": {
+												"value": "@{item().Src_Param_1}",
+												"type": "Expression"
+											}
+										}
+									},
+									"queryTimeout": "02:00:00"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_Target_Table",
+									"type": "DatasetReference",
+									"parameters": {
+										"Target_Table": "@{item().Src_Table}",
+										"Target_Schema": "@{item().Src_Schema}",
+										"DatabaseName": "@{item().Src_Database}",
+										"Target_ServerName": "@{item().Src_Server}",
+										"Target_UserName": "@{item().Src_User}",
+										"Target_Password": "@{item().Src_Pwd}",
+										"Target_Query": "@{item().Src_Query_v1}",
+										"Target_Param_1": "@{item().Src_Param_1}"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_Target_Blob",
+									"type": "DatasetReference",
+									"parameters": {
+										"File_Name": "@{item().Trg_Table}",
+										"Directory_Name": "@{item().Trg_Database}",
+										"Container_Name": "@{item().Trg_Server}"
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"PassingSchema": {
+				"type": "array"
+			}
+		},
+		"variables": {
+			"id": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
