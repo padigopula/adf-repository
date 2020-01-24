@@ -1,0 +1,12 @@
+{
+	"name": "DS_Abhi_Sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Abhi_Dest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
