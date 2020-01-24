@@ -1,0 +1,17 @@
+{
+	"name": "LS_Abhi_Src_Demo",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=True;data source=praveen;initial catalog=Source1",
+			"userName": "praveen",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5MDQxZjkzZS04ZTEwLTRjZjktOTE1NS1iZjE0YWVlOTc2NTEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "SHIROnPrem",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
