@@ -52,7 +52,9 @@
 				"typeProperties": {
 					"url": "https://s26events.azure-automation.net/webhooks?token=e2PFuXVfjgqGtjBMifE9P611BT7VQPMAGzYpsv4y2uI%3d",
 					"method": "POST",
-					"body": "Logging Pipeline and Activity",
+					"body": {
+						"key": "value"
+					},
 					"timeout": "00:10:00"
 				}
 			}
