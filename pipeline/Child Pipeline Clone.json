@@ -29,19 +29,7 @@
 							"typeProperties": {
 								"source": {
 									"type": "SqlServerSource",
-									"sqlReaderStoredProcedureName": {
-										"value": "@{item().Src_Query_v1}",
-										"type": "Expression"
-									},
-									"storedProcedureParameters": {
-										"Parameter_1": {
-											"type": "String",
-											"value": {
-												"value": "@{item().Src_Param_1}",
-												"type": "Expression"
-											}
-										}
-									},
+									"sqlReaderQuery": "@{item().Src_Query}",
 									"queryTimeout": "02:00:00"
 								},
 								"sink": {

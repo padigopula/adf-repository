@@ -24,7 +24,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "SELECT * FROM metadata.All_Connections_v2_vw\nwhere Workflow = 'WF1'\n",
+						"sqlReaderQuery": "SELECT * FROM metadata.All_Connections_v2\nwhere ID= 1\n",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
