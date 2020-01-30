@@ -24,7 +24,7 @@
 			"password": "@{linkedService().Password}"
 		},
 		"connectVia": {
-			"referenceName": "SHIROnPrem",
+			"referenceName": "SHIRNew",
 			"type": "IntegrationRuntimeReference"
 		}
 	}
