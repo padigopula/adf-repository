@@ -15,49 +15,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_AZ_Blob'"
 		},
-		"LS_AZ_table_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_AZ_table'"
-		},
-		"LS_Abhi_Dest_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Abhi_Dest'"
-		},
-		"LS_Abhi_Src_Demo_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Abhi_Src_Demo'"
-		},
-		"LS_Abhi_Src_Demo_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_Abhi_Src_Demo'"
-		},
 		"LS_Metadata_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_Metadata'"
-		},
-		"LS_Ranisri_Dest_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Ranisri_Dest'"
-		},
-		"LS_Ranisri_Source_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Ranisri_Source'"
-		},
-		"LS_Ranisri_Source_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_Ranisri_Source'"
-		},
-		"LS_Sai_Demo_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Sai_Demo'"
-		},
-		"LS_Sai_Demo_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_Sai_Demo'"
-		},
-		"LS_Sai_Sink_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Sai_Sink'"
 		},
 		"LS_Source_connectionString": {
 			"type": "secureString",
@@ -67,41 +27,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_Target'"
 		},
-		"LS_Test_Azure_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Test_Azure'"
-		},
-		"LS_gowri_dest_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_gowri_dest'"
-		},
-		"LS_gowri_source_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_gowri_source'"
-		},
-		"LS_gowri_source_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_gowri_source'"
-		},
-		"LS_Abhi_Src_Demo_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "praveen"
-		},
-		"LS_Ranisri_Source_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "praveen"
-		},
-		"LS_Sai_Demo_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "praveen"
-		},
 		"LS_Source_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "@{linkedService().User_Name}"
-		},
-		"LS_gowri_source_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "praveen"
 		}
 	},
 	"variables": {
@@ -841,70 +769,64 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/PL_Test_Load_to_Blob')]",
+			"name": "[concat(parameters('factoryName'), '/Wait 3')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy data1",
-						"type": "Copy",
+						"name": "Wait1",
+						"type": "Wait",
 						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
 						"userProperties": [],
 						"typeProperties": {
-							"source": {
-								"type": "AzureSqlSource",
-								"queryTimeout": "02:00:00"
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": {
-										"value": "_@{formatDateTime(utcnow(), 'yyyy-MM-dd HH:mm:ss')}.txt",
-										"type": "Expression"
-									}
-								}
-							},
-							"enableStaging": false
-						},
-						"inputs": [
-							{
-								"referenceName": "DS_Test_Az_DB",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "DS_Target_Blob",
-								"type": "DatasetReference",
-								"parameters": {
-									"File_Name": "dept",
-									"Directory_Name": "dept",
-									"Container_Name": "archived"
-								}
-							}
-						]
+							"waitTimeInSeconds": 1
+						}
 					}
 				],
 				"annotations": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_Test_Az_DB')]",
-				"[concat(variables('factoryId'), '/datasets/DS_Target_Blob')]"
-			]
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Wait Test 2')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Wait Test')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_Metadata')]",
@@ -1158,54 +1080,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_Test_Az_DB')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_Test_Azure",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "DEPTNO",
-						"type": "decimal",
-						"precision": 2,
-						"scale": 0
-					},
-					{
-						"name": "DNAME",
-						"type": "varchar"
-					},
-					{
-						"name": "LOC",
-						"type": "varchar"
-					},
-					{
-						"name": "CreatedDate",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					},
-					{
-						"name": "ModifiedDate",
-						"type": "datetime",
-						"precision": 23,
-						"scale": 3
-					}
-				],
-				"typeProperties": {
-					"schema": "staging",
-					"table": "DEPT"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_Test_Azure')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/LS_AZ_BLOB_Delimited')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -1232,56 +1106,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/LS_AZ_table')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureTableStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('LS_AZ_table_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_Abhi_Dest')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('LS_Abhi_Dest_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_Abhi_Src_Demo')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"connectionString": "[parameters('LS_Abhi_Src_Demo_connectionString')]",
-					"userName": "[parameters('LS_Abhi_Src_Demo_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('LS_Abhi_Src_Demo_password')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "SHIROnPrem",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/SHIROnPrem')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/LS_Metadata')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -1290,80 +1114,6 @@
 				"type": "SqlServer",
 				"typeProperties": {
 					"connectionString": "[parameters('LS_Metadata_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_Ranisri_Dest')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('LS_Ranisri_Dest_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_Ranisri_Source')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"connectionString": "[parameters('LS_Ranisri_Source_connectionString')]",
-					"userName": "[parameters('LS_Ranisri_Source_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('LS_Ranisri_Source_password')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "SHIROnPrem",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/SHIROnPrem')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_Sai_Demo')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"connectionString": "[parameters('LS_Sai_Demo_connectionString')]",
-					"userName": "[parameters('LS_Sai_Demo_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('LS_Sai_Demo_password')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "SHIROnPrem",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/SHIROnPrem')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_Sai_Sink')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('LS_Sai_Sink_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -1431,56 +1181,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/LS_Test_Azure')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('LS_Test_Azure_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_gowri_dest')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('LS_gowri_dest_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_gowri_source')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"connectionString": "[parameters('LS_gowri_source_connectionString')]",
-					"userName": "[parameters('LS_gowri_source_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('LS_gowri_source_password')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "SHIROnPrem",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/SHIROnPrem')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/SHIRNew')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
@@ -1497,66 +1197,6 @@
 			"properties": {
 				"type": "SelfHosted",
 				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Wait Test')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Wait1",
-						"type": "Wait",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 1
-						}
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Wait Test 2')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Wait1",
-						"type": "Wait",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 1
-						}
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Wait 3')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Wait1",
-						"type": "Wait",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 1
-						}
-					}
-				],
-				"annotations": []
 			},
 			"dependsOn": []
 		}

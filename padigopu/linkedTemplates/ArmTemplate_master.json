@@ -15,49 +15,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_AZ_Blob'"
 		},
-		"LS_AZ_table_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_AZ_table'"
-		},
-		"LS_Abhi_Dest_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Abhi_Dest'"
-		},
-		"LS_Abhi_Src_Demo_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Abhi_Src_Demo'"
-		},
-		"LS_Abhi_Src_Demo_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_Abhi_Src_Demo'"
-		},
 		"LS_Metadata_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_Metadata'"
-		},
-		"LS_Ranisri_Dest_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Ranisri_Dest'"
-		},
-		"LS_Ranisri_Source_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Ranisri_Source'"
-		},
-		"LS_Ranisri_Source_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_Ranisri_Source'"
-		},
-		"LS_Sai_Demo_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Sai_Demo'"
-		},
-		"LS_Sai_Demo_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_Sai_Demo'"
-		},
-		"LS_Sai_Sink_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Sai_Sink'"
 		},
 		"LS_Source_connectionString": {
 			"type": "secureString",
@@ -67,41 +27,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_Target'"
 		},
-		"LS_Test_Azure_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Test_Azure'"
-		},
-		"LS_gowri_dest_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_gowri_dest'"
-		},
-		"LS_gowri_source_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_gowri_source'"
-		},
-		"LS_gowri_source_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_gowri_source'"
-		},
-		"LS_Abhi_Src_Demo_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "praveen"
-		},
-		"LS_Ranisri_Source_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "praveen"
-		},
-		"LS_Sai_Demo_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "praveen"
-		},
 		"LS_Source_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "@{linkedService().User_Name}"
-		},
-		"LS_gowri_source_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "praveen"
 		},
 		"containerUri": {
 			"type": "string",
@@ -136,95 +64,21 @@
 					"LS_AZ_Blob_connectionString": {
 						"value": "[parameters('LS_AZ_Blob_connectionString')]"
 					},
-					"LS_AZ_table_connectionString": {
-						"value": "[parameters('LS_AZ_table_connectionString')]"
-					},
-					"LS_Abhi_Dest_connectionString": {
-						"value": "[parameters('LS_Abhi_Dest_connectionString')]"
-					},
 					"LS_Metadata_connectionString": {
 						"value": "[parameters('LS_Metadata_connectionString')]"
-					},
-					"LS_Ranisri_Dest_connectionString": {
-						"value": "[parameters('LS_Ranisri_Dest_connectionString')]"
-					},
-					"LS_Sai_Sink_connectionString": {
-						"value": "[parameters('LS_Sai_Sink_connectionString')]"
 					},
 					"LS_Target_connectionString": {
 						"value": "[parameters('LS_Target_connectionString')]"
 					},
-					"LS_Test_Azure_connectionString": {
-						"value": "[parameters('LS_Test_Azure_connectionString')]"
+					"LS_Source_connectionString": {
+						"value": "[parameters('LS_Source_connectionString')]"
 					},
-					"LS_gowri_dest_connectionString": {
-						"value": "[parameters('LS_gowri_dest_connectionString')]"
-					},
-					"LS_Abhi_Src_Demo_connectionString": {
-						"value": "[parameters('LS_Abhi_Src_Demo_connectionString')]"
-					},
-					"LS_Abhi_Src_Demo_password": {
-						"value": "[parameters('LS_Abhi_Src_Demo_password')]"
-					},
-					"LS_Abhi_Src_Demo_properties_typeProperties_userName": {
-						"value": "[parameters('LS_Abhi_Src_Demo_properties_typeProperties_userName')]"
+					"LS_Source_properties_typeProperties_userName": {
+						"value": "[parameters('LS_Source_properties_typeProperties_userName')]"
 					}
 				}
 			},
 			"dependsOn": []
-		},
-		{
-			"name": "ArmTemplate_1",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2018-02-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
-					},
-					"LS_Ranisri_Source_connectionString": {
-						"value": "[parameters('LS_Ranisri_Source_connectionString')]"
-					},
-					"LS_Ranisri_Source_password": {
-						"value": "[parameters('LS_Ranisri_Source_password')]"
-					},
-					"LS_Sai_Demo_connectionString": {
-						"value": "[parameters('LS_Sai_Demo_connectionString')]"
-					},
-					"LS_Sai_Demo_password": {
-						"value": "[parameters('LS_Sai_Demo_password')]"
-					},
-					"LS_Source_connectionString": {
-						"value": "[parameters('LS_Source_connectionString')]"
-					},
-					"LS_gowri_source_connectionString": {
-						"value": "[parameters('LS_gowri_source_connectionString')]"
-					},
-					"LS_gowri_source_password": {
-						"value": "[parameters('LS_gowri_source_password')]"
-					},
-					"LS_Ranisri_Source_properties_typeProperties_userName": {
-						"value": "[parameters('LS_Ranisri_Source_properties_typeProperties_userName')]"
-					},
-					"LS_Sai_Demo_properties_typeProperties_userName": {
-						"value": "[parameters('LS_Sai_Demo_properties_typeProperties_userName')]"
-					},
-					"LS_Source_properties_typeProperties_userName": {
-						"value": "[parameters('LS_Source_properties_typeProperties_userName')]"
-					},
-					"LS_gowri_source_properties_typeProperties_userName": {
-						"value": "[parameters('LS_gowri_source_properties_typeProperties_userName')]"
-					}
-				}
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'ArmTemplate_0')]"
-			]
 		}
 	]
 }
