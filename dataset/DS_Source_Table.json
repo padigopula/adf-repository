@@ -53,6 +53,12 @@
 			},
 			"Param_1": {
 				"type": "string"
+			},
+			"Max_Query": {
+				"type": "string"
+			},
+			"Src_Legacy_System": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
