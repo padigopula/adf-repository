@@ -12,13 +12,13 @@
 			"value": ""
 		},
 		"LS_Metadata_connectionString": {
-			"value": ""
+			"value": "integrated security=False;data source=padigopu.database.windows.net;initial catalog=ETLDB;user id=praveen"
 		},
 		"LS_Source_connectionString": {
-			"value": ""
+			"value": "Integrated Security=True;Data Source=@{linkedService().Server_Name};Initial Catalog=@{linkedService().Source_Database_Name}"
 		},
 		"LS_Target_connectionString": {
-			"value": ""
+			"value": "Integrated Security=False;Data Source=@{linkedService().TargetServerName};Initial Catalog=@{linkedService().DatabaseName};User ID=@{linkedService().TargetUserName};Password=@{linkedService().TargetPassword}"
 		},
 		"LS_Source_properties_typeProperties_userName": {
 			"value": "@{linkedService().User_Name}"
