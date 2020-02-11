@@ -55,19 +55,7 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_Abhi_Src_Demo'"
 		},
-		"LS_Ranisri_Source_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LS_Ranisri_Source'"
-		},
-		"LS_Ranisri_Source_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LS_Ranisri_Source'"
-		},
 		"LS_Abhi_Src_Demo_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "praveen"
-		},
-		"LS_Ranisri_Source_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "praveen"
 		}
@@ -262,6 +250,26 @@
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Wait Test 2')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 1
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Wait 3')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -494,30 +502,6 @@
 					"password": {
 						"type": "SecureString",
 						"value": "[parameters('LS_Abhi_Src_Demo_password')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "SHIROnPrem",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/SHIROnPrem')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_Ranisri_Source')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"connectionString": "[parameters('LS_Ranisri_Source_connectionString')]",
-					"userName": "[parameters('LS_Ranisri_Source_properties_typeProperties_userName')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('LS_Ranisri_Source_password')]"
 					}
 				},
 				"connectVia": {

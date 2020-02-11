@@ -7,6 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "padigopu"
 		},
+		"LS_Ranisri_Source_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_Ranisri_Source'"
+		},
+		"LS_Ranisri_Source_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_Ranisri_Source'"
+		},
 		"LS_Sai_Demo_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_Sai_Demo'"
@@ -27,6 +35,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_gowri_source'"
 		},
+		"LS_Ranisri_Source_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "praveen"
+		},
 		"LS_Sai_Demo_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "praveen"
@@ -44,6 +56,28 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_Ranisri_Source')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"connectionString": "[parameters('LS_Ranisri_Source_connectionString')]",
+					"userName": "[parameters('LS_Ranisri_Source_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_Ranisri_Source_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "SHIROnPrem",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LS_Sai_Demo')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",

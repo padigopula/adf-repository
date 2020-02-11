@@ -166,17 +166,8 @@
 					"LS_Abhi_Src_Demo_password": {
 						"value": "[parameters('LS_Abhi_Src_Demo_password')]"
 					},
-					"LS_Ranisri_Source_connectionString": {
-						"value": "[parameters('LS_Ranisri_Source_connectionString')]"
-					},
-					"LS_Ranisri_Source_password": {
-						"value": "[parameters('LS_Ranisri_Source_password')]"
-					},
 					"LS_Abhi_Src_Demo_properties_typeProperties_userName": {
 						"value": "[parameters('LS_Abhi_Src_Demo_properties_typeProperties_userName')]"
-					},
-					"LS_Ranisri_Source_properties_typeProperties_userName": {
-						"value": "[parameters('LS_Ranisri_Source_properties_typeProperties_userName')]"
 					}
 				}
 			},
@@ -196,6 +187,12 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"LS_Ranisri_Source_connectionString": {
+						"value": "[parameters('LS_Ranisri_Source_connectionString')]"
+					},
+					"LS_Ranisri_Source_password": {
+						"value": "[parameters('LS_Ranisri_Source_password')]"
+					},
 					"LS_Sai_Demo_connectionString": {
 						"value": "[parameters('LS_Sai_Demo_connectionString')]"
 					},
@@ -210,6 +207,9 @@
 					},
 					"LS_gowri_source_password": {
 						"value": "[parameters('LS_gowri_source_password')]"
+					},
+					"LS_Ranisri_Source_properties_typeProperties_userName": {
+						"value": "[parameters('LS_Ranisri_Source_properties_typeProperties_userName')]"
 					},
 					"LS_Sai_Demo_properties_typeProperties_userName": {
 						"value": "[parameters('LS_Sai_Demo_properties_typeProperties_userName')]"
