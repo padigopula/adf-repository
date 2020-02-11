@@ -24,7 +24,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "SELECT * FROM metadata.All_Connections_v2\nwhere ID= 1\n",
+						"sqlReaderQuery": "SELECT * FROM metadata.All_Connections_v2\nwhere workflow = 'WF1'\n",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
@@ -48,7 +48,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Child Pipeline Clone",
+						"referenceName": "Child Pipeline Clone 2",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,
@@ -74,6 +74,60 @@
 				"userProperties": [],
 				"typeProperties": {
 					"storedProcedureName": "[metadata].[sp_Truncate_StagingTables]"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_Metadata",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "InsertWaterMarkLogHist",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Execute Pipeline1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[log].[usp_WaterMarkLogHist]"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_Metadata",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "UpdateAllConnectionsParameters",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "InsertWaterMarkLogHist",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[log].[usp_All_Connections_v2_Update_Parameters]"
 				},
 				"linkedServiceName": {
 					"referenceName": "LS_Metadata",
