@@ -1,5 +1,5 @@
 {
-	"name": "Wait 12",
+	"name": "Wait 21",
 	"properties": {
 		"activities": [
 			{
@@ -13,8 +13,5 @@
 			}
 		],
 		"annotations": []
-
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
-
+	}
 }
