@@ -62,6 +62,12 @@
 			},
 			"AndCondition": {
 				"type": "string"
+			},
+			"Param_1_quotes": {
+				"type": "string"
+			},
+			"Param_2_quotes": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
