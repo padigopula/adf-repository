@@ -56,7 +56,8 @@
 										"Query_v1": "@{item().Src_Query_v1}",
 										"Param_1": "@{item().Src_Param_1}",
 										"Max_Query": "@{item().Src_MaxQuery}",
-										"Src_Legacy_System": "@{item().Src_Legacy_System}"
+										"Src_Legacy_System": "@{item().Src_Legacy_System}",
+										"AndCondition": "@{item().AndCondition}"
 									}
 								}
 							],
@@ -120,7 +121,8 @@
 										"Query_v1": "@{item().Src_Query_v1}",
 										"Param_1": "@{item().Src_Param_1}",
 										"Max_Query": "@{item().Src_MaxQuery}",
-										"Src_Legacy_System": "@{item().Src_Legacy_System}"
+										"Src_Legacy_System": "@{item().Src_Legacy_System}",
+										"AndCondition": "@{item().AndCondition}"
 									}
 								}
 							}
