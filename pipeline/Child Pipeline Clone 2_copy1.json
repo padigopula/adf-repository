@@ -167,11 +167,15 @@
 										},
 										"type": "String"
 									},
-									"WaterMarkDate": {
+									"NewWaterMarkDate": {
 										"value": {
 											"value": "@activity('Lookup1').output.firstrow.NewWaterMark",
 											"type": "Expression"
 										},
+										"type": "String"
+									},
+									"OldWaterWarkDate": {
+										"value": "@{item().Src_Param_1}",
 										"type": "String"
 									}
 								}
