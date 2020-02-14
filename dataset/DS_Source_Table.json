@@ -60,7 +60,7 @@
 			"Src_Legacy_System": {
 				"type": "string"
 			},
-			"And_Condition": {
+			"AndCondition": {
 				"type": "string"
 			}
 		},
