@@ -37,7 +37,7 @@
 								"source": {
 									"type": "SqlServerSource",
 									"sqlReaderQuery": {
-										"value": "@{item().Src_Query} @{item().Src_Param_1_quotes}@{item().AndCondition}@{item().Src_Param_2_quotes}",
+										"value": "@{item().Src_Query}@{item().Src_Param_1_quotes}@{item().AndCondition}@{item().Src_Param_2_quotes}",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00"
