@@ -59,6 +59,9 @@
 			},
 			"Src_Legacy_System": {
 				"type": "string"
+			},
+			"And_Condition": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
