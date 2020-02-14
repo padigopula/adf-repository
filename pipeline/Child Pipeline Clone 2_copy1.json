@@ -153,29 +153,20 @@
 							"typeProperties": {
 								"storedProcedureName": "[log].[usp_WaterMarkLog]",
 								"storedProcedureParameters": {
+									"NewWaterMarkDate": {
+										"value": "@activity('Lookup1').output.firstrow.NewWaterMark",
+										"type": "String"
+									},
+									"OldWaterMarkDate": {
+										"value": "@{item().Src_Param_1}",
+										"type": "String"
+									},
 									"SrcSystem": {
-										"value": {
-											"value": "@{item().Src_Legacy_System}",
-											"type": "Expression"
-										},
+										"value": "@{item().Src_System}",
 										"type": "String"
 									},
 									"TableName": {
-										"value": {
-											"value": "@{item().Src_Table}",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"NewWaterMarkDate": {
-										"value": {
-											"value": "@activity('Lookup1').output.firstrow.NewWaterMark",
-											"type": "Expression"
-										},
-										"type": "String"
-									},
-									"OldWaterWarkDate": {
-										"value": "@{item().Src_Param_1}",
+										"value": "@{item().Src_Table}",
 										"type": "String"
 									}
 								}
