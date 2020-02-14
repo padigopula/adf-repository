@@ -37,7 +37,7 @@
 								"source": {
 									"type": "SqlServerSource",
 									"sqlReaderQuery": {
-										"value": "@{item().Src_Query} @{item().Src_Param_1}@{item().AndCondition}@{item().Src_Param_2}",
+										"value": "@{item().Src_Query} @{item().Src_Param_1_quotes}@{item().AndCondition}@{item().Src_Param_2_quotes}",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00"
@@ -64,7 +64,9 @@
 										"Param_1": "@{item().Src_Param_1}",
 										"Max_Query": "@{item().Src_MaxQuery}",
 										"Src_Legacy_System": "@{item().Src_Legacy_System}",
-										"AndCondition": "@{item().AndCondition}"
+										"AndCondition": "@{item().AndCondition}",
+										"Param_1_quotes": "@{item().Src_Param_1_quotes}",
+										"Param_2_quotes": "@{item().Src_Param_2_quotes}"
 									}
 								}
 							],
@@ -122,7 +124,9 @@
 										"Param_1": "@{item().Src_Param_1}",
 										"Max_Query": "@{item().Src_MaxQuery}",
 										"Src_Legacy_System": "@{item().Src_Legacy_System}",
-										"AndCondition": "@{item().AndCondition}"
+										"AndCondition": "@{item().AndCondition}",
+										"Param_1_quotes": "@{item().Src_Param_1_quotes}",
+										"Param_2_quotes": "@{item().Src_Param_2_quotes}"
 									}
 								}
 							}
