@@ -1,5 +1,5 @@
 {
-	"name": "Master Pipeline_copy1",
+	"name": "Master Pipeline v1",
 	"properties": {
 		"activities": [
 			{
@@ -48,7 +48,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Child Pipeline Clone 2_copy1",
+						"referenceName": "Child Pipeline v3",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,

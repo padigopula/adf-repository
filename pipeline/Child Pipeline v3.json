@@ -1,5 +1,5 @@
 {
-	"name": "Child Pipeline Clone 2_copy1",
+	"name": "Child Pipeline v3",
 	"properties": {
 		"activities": [
 			{
@@ -154,19 +154,31 @@
 								"storedProcedureName": "[log].[usp_WaterMarkLog]",
 								"storedProcedureParameters": {
 									"NewWaterMarkDate": {
-										"value": "@activity('Lookup1').output.firstrow.NewWaterMark",
+										"value": {
+											"value": "@activity('Lookup1').output.firstrow.NewWaterMark",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"OldWaterMarkDate": {
-										"value": "@{item().Src_Param_1}",
+										"value": {
+											"value": "@{item().Src_Param_1}",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"SrcSystem": {
-										"value": "@{item().Src_System}",
+										"value": {
+											"value": "@{item().Src_System}",
+											"type": "Expression"
+										},
 										"type": "String"
 									},
 									"TableName": {
-										"value": "@{item().Src_Table}",
+										"value": {
+											"value": "@{item().Src_Table}",
+											"type": "Expression"
+										},
 										"type": "String"
 									}
 								}

@@ -48,7 +48,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Child Pipeline Clone 2",
+						"referenceName": "Child Pipeline v2",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true,

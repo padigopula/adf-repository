@@ -1,5 +1,5 @@
 {
-	"name": "Child Pipeline Clone 2",
+	"name": "Child Pipeline v2",
 	"properties": {
 		"activities": [
 			{
@@ -175,7 +175,10 @@
 										"type": "String"
 									},
 									"OldWaterMarkDate": {
-										"value": "@{item().Src_Param_1}",
+										"value": {
+											"value": "@{item().Src_Param_1}",
+											"type": "Expression"
+										},
 										"type": "String"
 									}
 								}
